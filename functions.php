@@ -1,12 +1,13 @@
-
 <?php
-
 ini_set('display_errors', 1);
 // 「dbname」「port」「host」「username」「password」を設定
 // DB接続情報　　　　↓ここだけ自分のデータベース名に変更！
-define('DSN', 'mysql:host=mysql-2.mc.lolipop.lan;port=3306; dbname=65f980f79e93e785f8038903aa8265ae');
-define('DB_USER', '65f980f79e93e785f8038903aa8265ae');
-define('DB_PASS', 'Masafumi455');
+// define('DSN', 'mysql:host=mysql-2.mc.lolipop.lan;port=3306; dbname=48362d9f1e00f1ccf358875134db0d97');
+// define('DB_USER', '48362d9f1e00f1ccf358875134db0d97');
+// define('DB_PASS', 'Masafumi455');
+define('DSN', 'mysql:host=localhost;dbname=metadataTable-NFT');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 
 try {
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
@@ -18,6 +19,4 @@ try {
 function h($str){
   return htmlspecialchars($str, ENT_QUOTES, 'utf-8');
 }
-
-
 ?>
