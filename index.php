@@ -1,9 +1,10 @@
 <?php
 require_once('functions.php');
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: *");
+//  -------fetch テスト ------------
+// header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Headers: *");
 
-var_dump($_POST);
+// var_dump($_POST);
 // echo $_POST;
 
 // $params = json_decode(file_get_contents('php://input', true));
@@ -19,7 +20,9 @@ var_dump($_POST);
 // var_dump($id);
 
 
-exit('ok');
+// exit('ok');
+//  -------fetch テストend ------------
+
 $title = $_POST['title'];
 $plice = $_POST['plice'];
 $discription = $_POST['discription'];
