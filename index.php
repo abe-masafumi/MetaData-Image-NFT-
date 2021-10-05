@@ -21,11 +21,11 @@ require_once('functions.php');
 
 // exit('ok');
 //  -------fetch テストend ------------
-
 $title = $_POST['title'];
 $plice = $_POST['plice'];
 $discription = $_POST['discription'];
-$uniqueNumber = $_POST['uniqueNumber'];
+// $uniqueNumber = $_POST['uniqueNumber'];
+$uniqueNumber = uniqid();
 $address = $_POST['address'];
 
 var_dump($title);
@@ -36,8 +36,6 @@ var_dump($uniqueNumber);
 var_dump($address);
 // exit('ok');
 $up_image = $_FILES['file']['name'];
-
-
 
 // SQL作成&実行データベースに入れるならこれつかヲーねい
 $sql = "INSERT INTO metaTable(meta_id, plice, title, discription, image, uniqid, MetaMaskAddress,create_at,update_at) VALUES(NULL,:plice,:title, :discription, :image, :uniqid, :MetaMaskAddress,sysdate(),null)";
@@ -51,7 +49,7 @@ $stmt->bindValue(':uniqid', $uniqueNumber, PDO::PARAM_STR);
 $stmt->bindValue(':MetaMaskAddress', $address, PDO::PARAM_STR);
 
 $status = $stmt->execute(); // SQLを実行
-exit('iok');
+// exit('iok');
 // ------画像アップロード--------
 $upload = "image/";
 if (move_uploaded_file($_FILES['file']['tmp_name'], $new_file = $upload . $uniqueNumber . $up_image)) {
@@ -65,16 +63,20 @@ $imageurl = $upload . $up_image;
 $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
+  "imageurl" => "http://localhost/myfile_lab05/%20NFTMetaData/image/$uniqueNumber$up_image",
   "image" => "$up_image",
   "discription" => "$discription",
   "uniqueNumber" => "$uniqueNumber",
+  "address" => "$address",
 );
 
 $est = json_encode($somecontent);
-$fp = fopen("meta/$uniqueNumber$up_image.json", "c");
+$fp = fopen("meta/$address$uniqueNumber.json", "c");
 $img = fwrite($fp, $est);
 fclose($fp);
 header("Access-Control-Allow-Origin: *");
+echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
+header("Location:http://localhost:3000/createSingleTreasure?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
 ?>
 
 <head>
