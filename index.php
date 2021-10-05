@@ -8,7 +8,6 @@ require_once('functions.php');
 // echo $_POST;
 
 // $params = json_decode(file_get_contents('php://input', true));
-// $params = json_decode(file_get_contents('php://input'), false); 
 
 // $id = $params["title"];
 // var_dump($id );
@@ -27,16 +26,33 @@ $title = $_POST['title'];
 $plice = $_POST['plice'];
 $discription = $_POST['discription'];
 $uniqueNumber = $_POST['uniqueNumber'];
+$address = $_POST['address'];
 
 var_dump($title);
 var_dump($discription);
 var_dump($plice);
 // insert分にはまだ入れてない↓
 var_dump($uniqueNumber);
+var_dump($address);
 // exit('ok');
-
-// ------画像アップロード--------
 $up_image = $_FILES['file']['name'];
+
+
+
+// SQL作成&実行データベースに入れるならこれつかヲーねい
+$sql = "INSERT INTO metaTable(meta_id, plice, title, discription, image, uniqid, MetaMaskAddress,create_at,update_at) VALUES(NULL,:plice,:title, :discription, :image, :uniqid, :MetaMaskAddress,sysdate(),null)";
+
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':plice', $plice, PDO::PARAM_INT);
+$stmt->bindValue(':title', $title, PDO::PARAM_STR);
+$stmt->bindValue(':discription', $discription, PDO::PARAM_STR);
+$stmt->bindValue(':image', $up_image, PDO::PARAM_STR);
+$stmt->bindValue(':uniqid', $uniqueNumber, PDO::PARAM_STR);
+$stmt->bindValue(':MetaMaskAddress', $address, PDO::PARAM_STR);
+
+$status = $stmt->execute(); // SQLを実行
+exit('iok');
+// ------画像アップロード--------
 $upload = "image/";
 if (move_uploaded_file($_FILES['file']['tmp_name'], $new_file = $upload . $uniqueNumber . $up_image)) {
   echo 'アップロード成功';
@@ -44,31 +60,20 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $new_file = $upload . $uniqu
   echo 'アップロード失敗';
 }
 
-// SQL作成&実行データベースに入れるならこれつかヲーねい
-// $sql = "INSERT INTO metaTable(meta_id, plice, title, discription, image) VALUES(NULL,:plice,:title, :discription, :image)";
-// $stmt = $pdo->prepare($sql);
-
-// $stmt->bindValue(':plice', $plice, PDO::PARAM_INT);
-// $stmt->bindValue(':title', $title, PDO::PARAM_STR);
-// $stmt->bindValue(':discription', $discription, PDO::PARAM_STR);
-// $stmt->bindValue(':image', $up_image, PDO::PARAM_STR);
-
-// $status = $stmt->execute(); // SQLを実行
-
 $imageurl = $upload . $up_image;
 
 $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
-  "image" => "$imageurl",
+  "image" => "$up_image",
   "discription" => "$discription",
+  "uniqueNumber" => "$uniqueNumber",
 );
 
 $est = json_encode($somecontent);
-$fp = fopen("meta/$uniqueNumber.json", "c");
+$fp = fopen("meta/$uniqueNumber$up_image.json", "c");
 $img = fwrite($fp, $est);
 fclose($fp);
-
 header("Access-Control-Allow-Origin: *");
 ?>
 
