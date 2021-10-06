@@ -28,12 +28,12 @@ $discription = $_POST['discription'];
 $uniqueNumber = uniqid();
 $address = $_POST['address'];
 
-var_dump($title);
-var_dump($discription);
-var_dump($plice);
+// var_dump($title);
+// var_dump($discription);
+// var_dump($plice);
 // insert分にはまだ入れてない↓
-var_dump($uniqueNumber);
-var_dump($address);
+// var_dump($uniqueNumber);
+// var_dump($address);
 // exit('ok');
 $up_image = $_FILES['file']['name'];
 
@@ -76,7 +76,8 @@ $img = fwrite($fp, $est);
 fclose($fp);
 header("Access-Control-Allow-Origin: *");
 // echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
-header("Location:http://localhost:3000/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
+// header("Location:http://localhost:3000/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
+header("https://nextjs-anifo-lhlherzjc-next-anifo.vercel.app/createSingleTreasure/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
 ?>
 
 <head>
