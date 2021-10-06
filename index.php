@@ -53,9 +53,9 @@ $status = $stmt->execute(); // SQLを実行
 // ------画像アップロード--------
 $upload = "image/";
 if (move_uploaded_file($_FILES['file']['tmp_name'], $new_file = $upload . $uniqueNumber . $up_image)) {
-  echo 'アップロード成功';
+  // echo 'アップロード成功';
 } else {
-  echo 'アップロード失敗';
+  // echo 'アップロード失敗';
 }
 
 $imageurl = $upload . $up_image;
