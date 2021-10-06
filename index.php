@@ -75,8 +75,8 @@ $fp = fopen("meta/$address$uniqueNumber.json", "c");
 $img = fwrite($fp, $est);
 fclose($fp);
 header("Access-Control-Allow-Origin: *");
-echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
-header("Location:http://localhost:3000/createSingleTreasure?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
+// echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
+header("Location:http://localhost:3000/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
 ?>
 
 <head>

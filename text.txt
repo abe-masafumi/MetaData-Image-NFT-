@@ -10,3 +10,10 @@
           <input type="hidden" name="MAX_FILE_SIZE" value="4194304" />
           <button type="submit"></button>
         </form>
+
+  next.js側でユニークidを作った時のコード
+    // フォーム送信時のユニークidを生成:16329763806285
+    // const uniqueNumber = new Date().getTime().toString() + Math.floor(Math.random() * 10).toString()
+    // console.log(uniqueNumber)
+
+          {/* <input type="hidden" name="uniqueNumber" value={uniqueNumber} /> */}
