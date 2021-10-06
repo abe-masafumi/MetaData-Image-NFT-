@@ -1,43 +1,14 @@
 <?php
 require_once('functions.php');
-//  -------fetch テスト ------------
-// header("Access-Control-Allow-Origin: *");
-// header("Access-Control-Allow-Headers: *");
 
-// var_dump($_POST);
-// echo $_POST;
-
-// $params = json_decode(file_get_contents('php://input', true));
-
-// $id = $params["title"];
-// var_dump($id );
-// echo $params;
-
-// echo $params['title'];
-
-// print_r($id);
-// var_dump($id);
-
-
-// exit('ok');
-//  -------fetch テストend ------------
+// 変数を格納
+$uniqueNumber = uniqid();
 $title = $_POST['title'];
 $plice = $_POST['plice'];
-$discription = $_POST['discription'];
-// $uniqueNumber = $_POST['uniqueNumber'];
-$uniqueNumber = uniqid();
 $address = $_POST['address'];
-
-// var_dump($title);
-// var_dump($discription);
-// var_dump($plice);
-// insert分にはまだ入れてない↓
-// var_dump($uniqueNumber);
-// var_dump($address);
-// exit('ok');
+$discription = $_POST['discription'];
 $up_image = $_FILES['file']['name'];
 
-// SQL作成&実行データベースに入れるならこれつかヲーねい
 $sql = "INSERT INTO metaTable(meta_id, plice, title, discription, image, uniqid, MetaMaskAddress,create_at,update_at) VALUES(NULL,:plice,:title, :discription, :image, :uniqid, :MetaMaskAddress,sysdate(),null)";
 
 $stmt = $pdo->prepare($sql);
@@ -47,9 +18,8 @@ $stmt->bindValue(':discription', $discription, PDO::PARAM_STR);
 $stmt->bindValue(':image', $up_image, PDO::PARAM_STR);
 $stmt->bindValue(':uniqid', $uniqueNumber, PDO::PARAM_STR);
 $stmt->bindValue(':MetaMaskAddress', $address, PDO::PARAM_STR);
+$status = $stmt->execute();
 
-$status = $stmt->execute(); // SQLを実行
-// exit('iok');
 // ------画像アップロード--------
 $upload = "image/";
 if (move_uploaded_file($_FILES['file']['tmp_name'], $new_file = $upload . $uniqueNumber . $up_image)) {
@@ -59,10 +29,10 @@ if (move_uploaded_file($_FILES['file']['tmp_name'], $new_file = $upload . $uniqu
 }
 
 $imageurl = $upload . $up_image;
-
 $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
+  // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
   "imageurl" => "<?= $deployMetadataUrl ?>image/$uniqueNumber$up_image",
   "image" => "$up_image",
   "discription" => "$discription",
@@ -70,14 +40,17 @@ $somecontent = (object) array(
   "address" => "$address",
 );
 
+// /metaにJSONファイルを作成
 $est = json_encode($somecontent);
 $fp = fopen("meta/$address$uniqueNumber.json", "c");
 $img = fwrite($fp, $est);
 fclose($fp);
+
 header("Access-Control-Allow-Origin: *");
-// echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
-// header("Location:http://localhost:3000/mintOnlyPage/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
-header("Location:https://nextjs-anifo.vercel.app/mintOnlyPage/?url=<?= $deployMetadataUrl ?>meta/$address$uniqueNumber.json");
+
+// レスポンスを返す
+// 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
+header("Location:<?= $deployNextUrl ?>mintOnlyPage/?url=<?= $deployMetadataUrl ?>meta/$address$uniqueNumber.json");
 ?>
 
 <head>
