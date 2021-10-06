@@ -63,7 +63,7 @@ $imageurl = $upload . $up_image;
 $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
-  "imageurl" => "https://loving-kusu-4281.lolipop.io/image/$uniqueNumber$up_image",
+  "imageurl" => "<?= $deployMetadataUrl ?>image/$uniqueNumber$up_image",
   "image" => "$up_image",
   "discription" => "$discription",
   "uniqueNumber" => "$uniqueNumber",
@@ -76,8 +76,8 @@ $img = fwrite($fp, $est);
 fclose($fp);
 header("Access-Control-Allow-Origin: *");
 // echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
-// header("Location:http://localhost:3000/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
-header("Location:https://nextjs-anifo.vercel.app/mintOnlyPage/?url=https://loving-kusu-4281.lolipop.io/meta/$address$uniqueNumber.json");
+// header("Location:http://localhost:3000/mintOnlyPage/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
+header("Location:https://nextjs-anifo.vercel.app/mintOnlyPage/?url=<?= $deployMetadataUrl ?>meta/$address$uniqueNumber.json");
 ?>
 
 <head>
