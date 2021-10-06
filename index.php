@@ -77,7 +77,7 @@ fclose($fp);
 header("Access-Control-Allow-Origin: *");
 // echo "http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber";
 // header("Location:http://localhost:3000/?url=http://localhost/myfile_lab05/%20NFTMetaData/meta/$address$uniqueNumber.json");
-header("Location:https://nextjs-anifo.vercel.app/createSingleTreasure/?url=https://loving-kusu-4281.lolipop.io/meta/$address$uniqueNumber.json");
+header("Location:https://nextjs-anifo.vercel.app/mintOnlyPage/?url=https://loving-kusu-4281.lolipop.io/meta/$address$uniqueNumber.json");
 ?>
 
 <head>
