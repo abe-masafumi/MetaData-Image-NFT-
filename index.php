@@ -33,7 +33,7 @@ $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
   // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
-  "imageurl" => "$deployMetadataUr\limage/$uniqueNumber$up_image",
+  "imageurl" => "$deployMetadataUrl\limage/$uniqueNumber$up_image",
   "image" => "$up_image",
   "discription" => "$discription",
   "uniqueNumber" => "$uniqueNumber",
