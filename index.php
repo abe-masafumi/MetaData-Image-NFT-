@@ -33,7 +33,8 @@ $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
   // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
-  "imageurl" => "{$localMetadataUrl}image/$uniqueNumber$up_image",
+  "imageurl" => "{$deployMetadataUrl}image/$uniqueNumber$up_image",
+  // "imageurl" => "{$localMetadataUrl}image/$uniqueNumber$up_image",
   "image" => "$up_image",
   "discription" => "$discription",
   "uniqueNumber" => "$uniqueNumber",
@@ -50,7 +51,8 @@ header("Access-Control-Allow-Origin: *");
 
 // レスポンスを返す
 // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
-header("Location:{$localNextUrl}mintOnlyPage/?url={$localMetadataUrl}meta/$address$uniqueNumber.json");
+header("Location:{$deployNextUrl}mintOnlyPage/?url={$deployMetadataUrl}meta/$address$uniqueNumber.json");
+// header("Location:{$localNextUrl}mintOnlyPage/?url={$localMetadataUrl}meta/$address$uniqueNumber.json");
 ?>
 
 <head>
