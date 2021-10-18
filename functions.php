@@ -28,4 +28,4 @@ $localMetadataUrl = "http://localhost/myfile_lab05/%20NFTMetaData/";
 $deployMetadataUrl = "https://loving-kusu-4281.lolipop.io/";
 // 📲📲フロント📲📲
 $localNextUrl = "http://localhost:3000/";
-$deployNextUrl = "https://nextjs-anifo.vercel.app/";
+$deployNextUrl = "https://nextjs-anifo-steel.vercel.app/";
