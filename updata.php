@@ -17,6 +17,6 @@ if ($status == false) {
   exit('sqlError:' . $error[2]);
 }
   // 🧐🧐🧐チェックしてね⏬⏬🧐🧐🧐
-header("Location:{$localNextUrl}/?tokenID={$tokenID}");
-// header("Location:{$deployNextUrl}/?tokenID={$tokenID}");
+// header("Location:{$localNextUrl}/?tokenID={$tokenID}");
+header("Location:{$deployNextUrl}/?tokenID={$tokenID}");
 ?>

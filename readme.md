@@ -32,4 +32,5 @@ formから送られてきたデータをオブジェクトに変換して保管
 ```
 functions.php X1
 index.php X3
+updata.php X1
 ```
