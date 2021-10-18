@@ -54,7 +54,7 @@ header("Access-Control-Allow-Origin: *");
 
 // レスポンスを返す
 // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
-header("Location:{$deployNextUrl}mintOnlyPage/?url={$deployMetadataUrl}meta/$address$uniqueNumber.json");
+header("Location:{$deployNextUrl}mintOnlyPage/?url={$deployMetadataUrl}meta/$address$uniqueNumber.json&price={$plice}&uniqueNumber={$uniqueNumber}");
 // header("Location:{$localNextUrl}mintOnlyPage/?url={$localMetadataUrl}meta/$address$uniqueNumber.json&price={$plice}&uniqueNumber={$uniqueNumber}");
 ?>
 

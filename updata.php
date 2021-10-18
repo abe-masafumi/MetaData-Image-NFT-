@@ -18,5 +18,5 @@ if ($status == false) {
 }
   // 🧐🧐🧐チェックしてね⏬⏬🧐🧐🧐
 // header("Location:{$localNextUrl}/?tokenID={$tokenID}");
-header("Location:{$deployNextUrl}/?tokenID={$tokenID}");
+header("Location:{$deployNextUrl}?tokenID={$tokenID}");
 ?>
