@@ -9,6 +9,6 @@ $stmt = $pdo->prepare('SELECT * FROM metaTable WHERE uniqid = ?');
 $stmt->execute([$params]);
 $stmt->execute();
 $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
+header("Access-Control-Allow-Origin: *");
 echo json_encode($rows);
 ?>

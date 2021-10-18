@@ -9,5 +9,5 @@ foreach ($result as $value) {
   $content = json_decode(file_get_contents($value));
   array_push($ary, $content);
 }
-
+header("Access-Control-Allow-Origin: *");
 echo json_encode($ary);

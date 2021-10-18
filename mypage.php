@@ -9,6 +9,6 @@ $stmt = $pdo->prepare('SELECT * FROM metaTable WHERE MetaMaskAddress = ?');
 $stmt->execute([$params]);
 $stmt->execute();
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+header("Access-Control-Allow-Origin: *");
 echo json_encode($rows);
 ?>

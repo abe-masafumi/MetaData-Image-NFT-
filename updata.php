@@ -16,6 +16,7 @@ if ($status == false) {
   $error = $stmt->errorInfo();
   exit('sqlError:' . $error[2]);
 }
+header("Access-Control-Allow-Origin: *");
   // 🧐🧐🧐チェックしてね⏬⏬🧐🧐🧐
 // header("Location:{$localNextUrl}/?tokenID={$tokenID}");
 header("Location:{$deployNextUrl}?tokenID={$tokenID}");
