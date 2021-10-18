@@ -3,8 +3,8 @@ require_once('functions.php');
 // fetchからのリクエストを受け取る(615e9cbcb317d)
 $tokenID = $_GET['tokenID'];
 $uniqid = $_GET['uniqueNumber'];
-var_dump($tokenID);
-var_dump($uniqid);
+// var_dump($tokenID);
+// var_dump($uniqid);
 
 // 文字列に変換
 $stmt = $pdo->prepare('UPDATE metaTable SET tokenID=:tokenID WHERE uniqid = :uniqid');
