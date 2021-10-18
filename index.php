@@ -33,8 +33,8 @@ $somecontent = (object) array(
   "plice" => "$plice",
   "title" => "$title",
   // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
-  "imageurl" => "{$deployMetadataUrl}image/$uniqueNumber$up_image",
-  // "imageurl" => "{$localMetadataUrl}image/$uniqueNumber$up_image",
+  // "imageurl" => "{$deployMetadataUrl}image/$uniqueNumber$up_image",
+  "imageurl" => "{$localMetadataUrl}image/$uniqueNumber$up_image",
   "image" => "$up_image",
   "discription" => "$discription",
   "uniqueNumber" => "$uniqueNumber",
@@ -48,11 +48,14 @@ $img = fwrite($fp, $est);
 fclose($fp);
 
 header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+// header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
+// header("Content-type:application/json");
 
 // レスポンスを返す
 // 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐 🧐🧐🧐チェックしてね⏬⏬⏬⏬🧐🧐🧐
-header("Location:{$deployNextUrl}mintOnlyPage/?url={$deployMetadataUrl}meta/$address$uniqueNumber.json");
-// header("Location:{$localNextUrl}mintOnlyPage/?url={$localMetadataUrl}meta/$address$uniqueNumber.json");
+// header("Location:{$deployNextUrl}mintOnlyPage/?url={$deployMetadataUrl}meta/$address$uniqueNumber.json");
+header("Location:{$localNextUrl}mintOnlyPage/?url={$localMetadataUrl}meta/$address$uniqueNumber.json&price={$plice}&uniqueNumber={$uniqueNumber}");
 ?>
 
 <head>
